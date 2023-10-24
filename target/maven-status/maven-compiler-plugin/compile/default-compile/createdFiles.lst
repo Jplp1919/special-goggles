@@ -1,0 +1,5 @@
+com\mycompany\wekaapipredict\WekaApiPredict.class
+com\mycompany\wekaapipredict\ConnectionFactory.class
+com\mycompany\wekaapipredict\Pessoa.class
+com\mycompany\wekaapipredict\ArffMaker.class
+com\mycompany\wekaapipredict\CsvMaker.class
