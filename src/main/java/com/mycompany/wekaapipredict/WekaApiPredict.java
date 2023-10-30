@@ -14,9 +14,8 @@ public class WekaApiPredict {
         Checker che = new Checker();
         int rows = che.checkCount(con);
         int newRows = rows;
-  
-        System.out.println(rows);
-       //  predict.predict(rows-1);
+
+        //predict.predict(rows-1);
                 
         
         
@@ -36,5 +35,5 @@ public class WekaApiPredict {
             }
         }
 
-    }
+    } 
 }

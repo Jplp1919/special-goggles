@@ -14,6 +14,7 @@ public class Predict {
     public void scry(String modelPath, String arffPath, int row) {
 
         try {
+           
             Classifier classifier = (Classifier) SerializationHelper.read(modelPath);
 
             Instances newData = DataSource.read(arffPath);
@@ -22,7 +23,8 @@ public class Predict {
 
            // for (int i = 0; i < newData.numInstances(); i++) {
                 double prediction = classifier.classifyInstance(newData.instance(row));
-                System.out.println("Instance " + (row) + " - Predicted: " + newData.classAttribute().value((int) prediction));
+                String predict =  newData.classAttribute().value((int) prediction);
+                System.out.println("Instance " + (row) + " - Predicted: " + predict);
            // }
 
          //  for (int i = 0; i < newData.numInstances(); i++) {
@@ -32,9 +34,14 @@ public class Predict {
                 int classIndex = 0; // Change to the correct index.
 
                 double percentage = predictionDistribution[classIndex] * 100; // Convert to percentage* 100
+                String percent = Double.toString(percentage);
                 System.out.println("Instance " + (row) + " - Predicted class " + newData.classAttribute().value(classIndex) + ": " + percentage + "%");
           // }
 
+          JsonMaker jmake = new JsonMaker();
+          
+          jmake.makeJson(predict, percent);
+          
         } catch (Exception e) {
             System.out.println(e);
         }
