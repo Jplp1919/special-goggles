@@ -8,24 +8,30 @@ import java.util.logging.Logger;
 
 public class WekaApiPredict {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Connection con = new ConnectionFactory().establishConnection();
         Predict predict = new Predict();
         Checker che = new Checker();
         int rows = che.checkCount(con);
         int newRows = rows;
-
-        //predict.predict(rows-1);
+        
+        //predict.predict();
                 
         
         
-        while (true) {
+      while (true) {
            newRows = che.checkCount(con);
          
             if (newRows != rows) {
                 
                 rows = che.rowCount;
-                predict.predict(rows-1);
+                
+                if(rows == 0){
+                    System.out.println("WARNING");
+                } else{
+                 predict.predict();   
+                }
+                
                 
                try {
                    TimeUnit.SECONDS.sleep(1);

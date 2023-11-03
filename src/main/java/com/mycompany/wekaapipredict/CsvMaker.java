@@ -9,7 +9,7 @@ import java.sql.Statement;
 
 public class CsvMaker {
 
-    public void sqlToCSV(int id, String filename, Connection con) {
+    public void sqlToCSV(String filename, Connection con) {
 
         try {
             Statement statement = con.createStatement();
